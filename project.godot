@@ -11,7 +11,13 @@ config_version=4
 [application]
 
 config/name="Infinitica"
+run/main_scene="res://scenes/Infinitica.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=640
+window/size/height=640
 
 [gui]
 
