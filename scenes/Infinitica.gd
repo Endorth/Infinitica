@@ -37,13 +37,20 @@ class MyCustomSorter:
 		return false
 
 func _ready():
+
 	record_number_lab.text = str(record_number)
 	record_user_lab.text = record_user
 	curr_username_lab.rect_position = main_user_lab_pos
 	curr_usernum_lab.rect_position = main_numb_lab_pos
+	TwitchChat.connect("new_message", self, "send_data")
 
-
-
+func send_data(data):
+	if "username" in data:
+		var user = data["username"]
+		var msg = data["msg"]
+		if msg.begins_with("-"):
+			add_number(user, msg)
+	
 func enter_action(msg):
 	var r = randi()% 10
 	var user = 'endorth' + str(r)

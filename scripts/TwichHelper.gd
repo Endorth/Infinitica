@@ -18,6 +18,7 @@ var connected:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	# activate ssl
 	_client.verify_ssl = true
 	# Connect base signals to get notified of connection open, close, and errors.
@@ -56,36 +57,69 @@ func connected(_proto = ""):
 	
 	_client.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
 	
-	if Constants.channel != "" && Constants.user != "" && Constants.token != "":
-		connect_to_channel(Constants.token, Constants.user, Constants.channel)
+#	if Constants.channel != "" && Constants.user != "" && Constants.token != "":
+#		connect_to_channel(Constants.token, Constants.user, Constants.channel)
+	
+	if channel != "" && user != "" && token != "":
+		connect_to_channel(token, user, channel)
+	else:
+		connect_to_channel("justinfun12345","Endorth4", "kappa")
 
 
+#func on_data():
+#	var messages : PoolStringArray = _client.get_peer(1).get_packet().get_string_from_utf8().strip_edges(false).split("\r\n")
+#	for message in messages:
+#		#print ("raw: ", message)
+#		if(message.begins_with("PING")):
+#			sendMessage("PONG :tmi.twitch.tv")
+#		else:
+#			var msg : PoolStringArray = message.split(" ", false, 1)
+#			var messageRaw:String = msg[1]
+#			var startIndexMessage = messageRaw.find("#"+Constants.channel)+len("#"+Constants.channel)+2
+#			var messageCutted:String = messageRaw.substr(startIndexMessage)
+#			var user:String = msg[0].substr(1, msg[0].find("!")-1)
+#			if user != Constants.user: #maybe active the message 366?
+#				emit_signal("received_message", message, user)
 func on_data():
 	var messages : PoolStringArray = _client.get_peer(1).get_packet().get_string_from_utf8().strip_edges(false).split("\r\n")
 	for message in messages:
-		#print ("raw: ", message)
+#		print ("raw: ", message)
 		if(message.begins_with("PING")):
 			sendMessage("PONG :tmi.twitch.tv")
 		else:
 			var msg : PoolStringArray = message.split(" ", false, 1)
 			var messageRaw:String = msg[1]
-			var startIndexMessage = messageRaw.find("#"+Constants.channel)+len("#"+Constants.channel)+2
+			var startIndexMessage = messageRaw.find("#"+channel)+len("#"+channel)+2
 			var messageCutted:String = messageRaw.substr(startIndexMessage)
-			var user:String = msg[0].substr(1, msg[0].find("!")-1)
-			if user != Constants.user: #maybe active the message 366?
-				emit_signal("received_message", message, user)
-
+			## 
+			var onlyMsg = messageRaw.substr(messageRaw.find(":")+1)
+			
+			var _user:String = msg[0].substr(1, msg[0].find("!")-1)
+			if _user != user: #maybe active the message 366?
+#				emit_signal("received_message", message, _user)
+				emit_signal("received_message", onlyMsg, _user)
+				
 func sendMessage(message:String):
 	if connected:
 		emit_signal("print_message", "sent: %s" % [message])
 		_client.get_peer(1).put_packet(message.to_utf8())
 	
-func connect_to_channel(token, channel, user):
+#func connect_to_channel(token, channel, user):
+#	# sendMessage("CAP REQ :twitch.tv/membership twitch.tv/tags twitch.tv/commands") we need this?
+#	if connected:
+#		sendMessage("PART #"+Constants.channel)
+#
+#	connected = true
+#	sendMessage("PASS "+token)
+#	sendMessage("NICK "+user)
+#	sendMessage("JOIN #"+channel)
+
+func connect_to_channel(tok, chan, us):
 	# sendMessage("CAP REQ :twitch.tv/membership twitch.tv/tags twitch.tv/commands") we need this?
 	if connected:
-		sendMessage("PART #"+Constants.channel)
+		sendMessage("PART #"+chan)
 	
 	connected = true
-	sendMessage("PASS "+token)
-	sendMessage("NICK "+user)
-	sendMessage("JOIN #"+channel)
+	sendMessage("PASS "+tok)
+	sendMessage("NICK "+us)
+	sendMessage("JOIN #"+chan)

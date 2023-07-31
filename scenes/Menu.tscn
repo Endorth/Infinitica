@@ -64,44 +64,17 @@ texture_hover = ExtResource( 5 )
 expand = true
 
 [node name="LineEdit" type="LineEdit" parent="."]
-margin_left = 268.0
-margin_top = 392.0
-margin_right = 544.0
-margin_bottom = 416.0
-
-[node name="LineEdit2" type="LineEdit" parent="."]
-margin_left = 268.0
-margin_top = 436.0
-margin_right = 544.0
-margin_bottom = 460.0
-
-[node name="LineEdit3" type="LineEdit" parent="."]
-margin_left = 268.0
-margin_top = 480.0
-margin_right = 544.0
-margin_bottom = 504.0
+margin_left = 184.0
+margin_top = 448.0
+margin_right = 460.0
+margin_bottom = 472.0
 
 [node name="Label3" type="Label" parent="."]
-margin_left = 64.0
-margin_top = 384.0
-margin_right = 198.0
-margin_bottom = 405.0
-custom_fonts/font = SubResource( 2 )
-text = "Twitch user"
-
-[node name="Label4" type="Label" parent="."]
-margin_left = 64.0
-margin_top = 432.0
-margin_right = 214.0
-margin_bottom = 453.0
-custom_fonts/font = SubResource( 2 )
-text = "Twitch Token"
-
-[node name="Label5" type="Label" parent="."]
-margin_left = 64.0
-margin_top = 480.0
-margin_right = 236.0
-margin_bottom = 501.0
+margin_left = 232.0
+margin_top = 392.0
+margin_right = 404.0
+margin_bottom = 413.0
+custom_colors/font_color = Color( 0.137255, 0.32549, 0.627451, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Twitch channel"
 

@@ -14,6 +14,11 @@ config/name="Infinitica"
 run/main_scene="res://scenes/Menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+TwichHelper="*res://scripts/TwichHelper.gd"
+TwitchChat="*res://scripts/TwitchChat.gd"
+
 [display]
 
 window/size/width=640
