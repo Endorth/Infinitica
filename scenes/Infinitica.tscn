@@ -32,19 +32,6 @@ margin_bottom = 276.0
 texture = ExtResource( 4 )
 expand = true
 
-[node name="SendButton" type="Button" parent="."]
-margin_left = 578.0
-margin_top = 608.0
-margin_right = 621.0
-margin_bottom = 628.0
-text = "Send"
-
-[node name="LineEdit" type="LineEdit" parent="SendButton"]
-margin_left = -184.0
-margin_top = -4.0
-margin_right = -10.0
-margin_bottom = 20.0
-
 [node name="RecordNumberLab" type="Label" parent="."]
 margin_left = 28.0
 margin_top = 120.0
@@ -130,5 +117,3 @@ custom_colors/font_color = Color( 1, 0.890196, 0.611765, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "0"
 align = 1
-
-[connection signal="pressed" from="SendButton" to="." method="_on_SendButton_pressed"]
