@@ -44,18 +44,6 @@ text = "0"
 align = 1
 autowrap = true
 
-[node name="RecordNumberLab2" type="Label" parent="."]
-margin_left = 40.0
-margin_top = -88.0
-margin_right = 628.0
-margin_bottom = -37.0
-grow_horizontal = 2
-custom_colors/font_color = Color( 0.360784, 0.729412, 1, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "try to reach 0"
-align = 1
-autowrap = true
-
 [node name="RecordUserLab" type="Label" parent="."]
 margin_left = 32.0
 margin_top = 28.0
